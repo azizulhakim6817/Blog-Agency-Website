@@ -20,7 +20,7 @@ const UserStore = create((set) => ({
   isFormSubmit: false,
   RegistarRequest: async (reqBody) => {
     set({ isFormSubmit: true });
-    let res = await axios.post(`http://localhost:8000/api/Register`, reqBody);
+    let res = await axios.post(`${baseURL}Register`, reqBody);
     set({ isFormSubmit: false });
     if (res.data["status"] === "success") {
       set({ RegistarFormData: res.data.data });
@@ -42,7 +42,7 @@ const UserStore = create((set) => ({
   isFormSubmit: false,
   LoginRequest: async (reqBody) => {
     set({ isFormSubmit: true });
-    let res = await axios.post(`http://localhost:8000/api/Login`, reqBody);
+    let res = await axios.post(`${baseURL}Login`, reqBody);
     set({ isFormSubmit: false });
     if (res.data["status"] === "success") {
       Cookies.set("token", res.data.token);
