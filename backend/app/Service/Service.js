@@ -50,8 +50,8 @@ export const updateServices = async (req, res) => {
 
 //! Delete a service.........................................
 export const deleteServices = async (req, res) => {
-  const userID = req.params.userID;
-  let query = { user_id: userID };
+  const serviceID = req.params.serviceID;
+  let query = {_id: serviceID };
 
   try {
     let data = await Service.deleteOne(query);
