@@ -42,7 +42,7 @@ const Service = () => {
                   <div className="mt-auto">
                     <button
                       type="button"
-                      className="btn btn-link text-primary p-0"
+                      className="btn btn-link text-primary p-0 text-decoration-none"
                     >
                       Read more
                     </button>

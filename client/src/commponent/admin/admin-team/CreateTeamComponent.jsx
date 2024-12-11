@@ -31,11 +31,11 @@ const CreateTeamComponent = () => {
 
   return (
     <div className="container my-4">
-      <h2 className="text-center mb-4">Create a New Team Member</h2>
+      <h2 className="text-center mb-4 colorText">Create a New Team Member</h2>
       <form className="p-4 bg-light rounded shadow">
         {/* name Input */}
         <div className="mb-3">
-          <label htmlFor="TeamnameInput" className="form-label">
+          <label htmlFor="TeamnameInput" className="form-label fw-semibold">
             Team Name:
           </label>
           <input
@@ -52,7 +52,7 @@ const CreateTeamComponent = () => {
 
         {/* role Input */}
         <div className="mb-3">
-          <label htmlFor="TeamRoleinput" className="form-label">
+          <label htmlFor="TeamRoleinput" className="form-label fw-semibold">
             Role:
           </label>
           <input
@@ -67,7 +67,10 @@ const CreateTeamComponent = () => {
 
         {/* description Input */}
         <div className="mb-3">
-          <label htmlFor="TeamDescriptionInput" className="form-label">
+          <label
+            htmlFor="TeamDescriptionInput"
+            className="form-label fw-semibold"
+          >
             Description:
           </label>
           <input
@@ -84,7 +87,7 @@ const CreateTeamComponent = () => {
 
         {/* Rating Input */}
         <div className="mb-3">
-          <label htmlFor="ratingInput" className="form-label">
+          <label htmlFor="ratingInput" className="form-label fw-semibold">
             Rating:
           </label>
           <input
@@ -101,7 +104,7 @@ const CreateTeamComponent = () => {
 
         {/* Upload Image */}
         <div className="mb-3">
-          <label htmlFor="imageInput" className="form-label">
+          <label htmlFor="imageInput" className="form-label fw-semibold">
             Upload Image:
           </label>
           <input
@@ -118,7 +121,7 @@ const CreateTeamComponent = () => {
           <button
             type="button"
             onClick={submitButton}
-            className="btn btn-primary"
+            className="btn btn-primary w-25 fw-bold mb-5"
           >
             Submit
           </button>

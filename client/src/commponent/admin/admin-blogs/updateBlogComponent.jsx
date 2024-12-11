@@ -34,11 +34,11 @@ const UpdateBlogComponent = () => {
 
   return (
     <div className="container my-4">
-      <h2 className="text-center mb-4">Update a Blog</h2>
+      <h2 className="text-center mb-4 colorText">Update a Blog</h2>
       <form className="p-4 bg-light rounded shadow ">
         {/* Title Name */}
         <div className="mb-3">
-          <label htmlFor="titleInput" className="form-label">
+          <label htmlFor="titleInput" className="form-label fw-semibold">
             Title Name:
           </label>
           <input
@@ -53,7 +53,7 @@ const UpdateBlogComponent = () => {
 
         {/* Author Name */}
         <div className="mb-3">
-          <label htmlFor="authorInput" className="form-label">
+          <label htmlFor="authorInput" className="form-label fw-semibold">
             Author Name:
           </label>
           <input
@@ -68,7 +68,7 @@ const UpdateBlogComponent = () => {
 
         {/* Description */}
         <div className="mb-3">
-          <label htmlFor="descriptionInput" className="form-label">
+          <label htmlFor="descriptionInput" className="form-label fw-semibold">
             Description:
           </label>
           <textarea
@@ -83,7 +83,7 @@ const UpdateBlogComponent = () => {
 
         {/* Date Input */}
         <div className="mb-3">
-          <label htmlFor="dateInput" className="form-label">
+          <label htmlFor="dateInput" className="form-label fw-semibold">
             Select Date:
           </label>
           <input
@@ -97,10 +97,11 @@ const UpdateBlogComponent = () => {
 
         {/* Image Input */}
         <div className="mb-3">
-          <label htmlFor="imageInput" className="form-label">
+          <label htmlFor="imageInput" className="form-label fw-semibold">
             Upload Image:
           </label>
           <input
+            id="imageInput"
             type="text"
             placeholder={"image url"}
             value={BlogFormValue.image}
@@ -112,7 +113,7 @@ const UpdateBlogComponent = () => {
         <div className="d-grid">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary w-25 fw-bold mb-5"
             onClick={SubmitButton}
           >
             Submit

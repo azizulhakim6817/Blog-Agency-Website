@@ -20,6 +20,10 @@ const serviceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    date: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true, versionKey: false }
 );

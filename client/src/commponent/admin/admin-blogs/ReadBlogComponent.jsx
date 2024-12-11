@@ -22,11 +22,14 @@ const ReadBlogComponent = () => {
 
   return (
     <div className="container">
+      <div className="text-center mb-4">
+        <h1 className="colorText fw-medium">Our Blogs </h1>
+      </div>
       <div className="d-flex gap-3 my-3">
         <Link to={`/dashboard`} className="btn btn-secondary">
           DashBoard
         </Link>
-        <Link to={`/create-blogs-page`} className="btn btn-success">
+        <Link to={`/create-blogs-page`} className="btn btn-primary">
           Create Blogs List
         </Link>
       </div>
@@ -34,7 +37,7 @@ const ReadBlogComponent = () => {
       {BlogList && BlogList.length > 0 ? (
         <div className="table-responsive">
           <table className="table table-bordered table-striped">
-            <thead>
+            <thead className="table-dark">
               <tr>
                 <th>#</th>
                 <th>Image</th>

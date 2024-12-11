@@ -23,19 +23,19 @@ const ReadServiceComponent = () => {
 
   return (
     <div className="container mt-4 mb-5">
+        <div className="text-center mb-4">
+        <h1 className="colorText fw-medium">Our Services </h1>
+      </div>
       <div className="d-flex gap-3 mb-4">
         <Link to={`/dashboard`} className="btn btn-secondary">
           Dashboard
         </Link>
-        <Link to={`/CreateServicePage`} className="btn btn-success">
+        <Link to={`/CreateServicePage`} className="btn btn-primary">
           Create Service List
         </Link>
       </div>
 
-      <div className="text-center mb-4">
-        <h1 className="colorText fw-medium">Our Services</h1>
-        <h3 className="text-secondary fs-5">Your journey starts here</h3>
-      </div>
+      
 
       {/* Table for Services */}
       <div className="table-responsive">

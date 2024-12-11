@@ -34,11 +34,11 @@ const UpdateTeamComponent = () => {
 
   return (
     <div className="container my-4 ">
-      <h2 className="text-center mb-4">Update a Service</h2>
+      <h2 className="text-center mb-4 colorText">Update a Team</h2>
       <form className="p-4 bg-light rounded shadow ">
         {/* Service Name........................................ */}
         <div className="mb-3">
-          <label htmlFor="NameInput" className="form-label">
+          <label htmlFor="NameInput" className="form-label fw-semibold">
             Team Name:
           </label>
           <input
@@ -53,7 +53,7 @@ const UpdateTeamComponent = () => {
 
         {/* Provider Name............................... */}
         <div className="mb-3">
-          <label htmlFor="roleInput" className="form-label">
+          <label htmlFor="roleInput" className="form-label fw-semibold">
             Role:
           </label>
           <input
@@ -70,7 +70,7 @@ const UpdateTeamComponent = () => {
 
         {/* Rating................................................... */}
         <div className="mb-3">
-          <label htmlFor="radingInput" className="form-label">
+          <label htmlFor="radingInput" className="form-label fw-semibold">
             Rating:
           </label>
           <input
@@ -87,10 +87,11 @@ const UpdateTeamComponent = () => {
 
         {/* Upload Image................................................*/}
         <div className="mb-3">
-          <label htmlFor="imageInput" className="form-label">
+          <label htmlFor="imageInput" className="form-label fw-semibold">
             Upload Image:
           </label>
           <input
+            id="imageInput"
             type="text"
             className="form-control"
             placeholder={"image url"}
@@ -103,7 +104,7 @@ const UpdateTeamComponent = () => {
         <div className="d-grid">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary w-25 fw-bold mb-5"
             onClick={SubmitButton}
           >
             Submit

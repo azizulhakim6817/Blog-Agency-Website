@@ -32,12 +32,12 @@ const CreateServiceComponent = () => {
 
   return (
     <div className="container my-4">
-      <h2 className="text-center mb-4">Create Service</h2>
+      <h2 className="colorText text-center mb-4">Create Service</h2>
       <form className="p-4 bg-light rounded shadow">
         {/* Service Name */}
         <div className="mb-3">
-          <label htmlFor="serviceNameInput" className="form-label">
-            Service Name:
+          <label htmlFor="serviceNameInput" className="form-label fw-semibold">
+            Service Title:
           </label>
           <input
             type="text"
@@ -51,7 +51,7 @@ const CreateServiceComponent = () => {
 
         {/* Provider Name */}
         <div className="mb-3">
-          <label htmlFor="providerInput" className="form-label">
+          <label htmlFor="providerInput" className="form-label fw-semibold">
             Provider Name:
           </label>
           <input
@@ -66,7 +66,7 @@ const CreateServiceComponent = () => {
 
         {/* Description */}
         <div className="mb-3">
-          <label htmlFor="descriptionInput" className="form-label">
+          <label htmlFor="descriptionInput" className="form-label fw-semibold">
             Description:
           </label>
           <textarea
@@ -78,10 +78,22 @@ const CreateServiceComponent = () => {
             onChange={(e) => ServiceFormOnChange("description", e.target.value)}
           />
         </div>
-
+        {/*  date */}
+        <div className="mb-3">
+          <label htmlFor="dateInput" className="form-label fw-semibold">
+            Date :
+          </label>
+          <input
+            id="dateInput"
+            type="date"
+            className="form-control"
+            value={ServiceFormValue.date}
+            onChange={(e) => ServiceFormOnChange("date", e.target.value)}
+          />
+        </div>
         {/* Upload Image */}
         <div className="mb-3">
-          <label htmlFor="imageInput" className="form-label">
+          <label htmlFor="imageInput" className="form-label fw-semibold">
             Upload Image:
           </label>
           <input
@@ -96,7 +108,7 @@ const CreateServiceComponent = () => {
         <div className="d-grid">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary w-25 fw-bold mb-5"
             onClick={SubmitButton}
           >
             Submit

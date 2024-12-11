@@ -33,11 +33,11 @@ const CreateBlogComponet = () => {
 
   return (
     <div className="container my-4">
-      <h2 className="text-center mb-4">Update a Service</h2>
+      <h2 className="colorText text-center mb-4">Update a Blogs</h2>
       <form className="p-4 bg-light rounded shadow">
         {/* Service Name */}
         <div className="mb-3">
-          <label htmlFor="blogTitleNameInput" className="form-label">
+          <label htmlFor="blogTitleNameInput" className="form-labe fw-semibold">
             Title :
           </label>
           <input
@@ -52,7 +52,7 @@ const CreateBlogComponet = () => {
 
         {/* Provider Name */}
         <div className="mb-3">
-          <label htmlFor="authorName" className="form-label">
+          <label htmlFor="authorName" className="form-label fw-semibold">
             Author Name:
           </label>
           <input
@@ -67,7 +67,7 @@ const CreateBlogComponet = () => {
 
         {/* Description */}
         <div className="mb-3">
-          <label htmlFor="descriptionInput" className="form-label">
+          <label htmlFor="descriptionInput" className="form-label fw-semibold">
             Description:
           </label>
           <textarea
@@ -80,10 +80,10 @@ const CreateBlogComponet = () => {
           />
         </div>
 
-        {/* Upload date */}
+        {/*  date */}
         <div className="mb-3">
-          <label htmlFor="dateInput" className="form-label">
-            Upload Image:
+          <label htmlFor="dateInput" className="form-label fw-semibold">
+            Date:
           </label>
           <input
             id="dateInput"
@@ -95,7 +95,7 @@ const CreateBlogComponet = () => {
         </div>
         {/* Upload Image */}
         <div className="mb-3">
-          <label htmlFor="imageInput" className="form-label">
+          <label htmlFor="imageInput" className="form-label fw-semibold">
             Upload Image:
           </label>
           <input
@@ -111,7 +111,7 @@ const CreateBlogComponet = () => {
         <div className="d-grid">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary w-25 fw-bold mb-5"
             onClick={SubmitButton}
           >
             Submit
