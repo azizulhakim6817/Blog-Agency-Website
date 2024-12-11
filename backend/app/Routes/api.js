@@ -8,6 +8,10 @@ import * as SliderController from "../Controllers/SliderController.js";
 import * as ContactFormController from "../Controllers/ContactFormController.js";
 import AuthMiddleware from "../Middleware/AuthenVerity.js";
 
+// login...........................
+router.post("/Register", UsersController.Register);
+router.post("/Login", UsersController.Login);
+
 //users Loign .................................
 router.get("/UserOTP/:email", UsersController.UserOTP);
 router.get("/VerifyLogin/:email/:otp", UsersController.VerifyLogin);

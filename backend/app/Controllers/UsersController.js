@@ -1,4 +1,20 @@
-import { UserOTPService, VerifyOTPSevice } from "./../Service/UsersService.js";
+import {
+  LoingService,
+  RegisterService,
+  UserOTPService,
+  VerifyOTPSevice,
+} from "./../Service/UsersService.js";
+
+//UserOTP....................................................
+export const Register = async (req, res) => {
+  let result = await RegisterService(req);
+  return res.status(200).json(result);
+};
+//UserOTP....................................................
+export const Login = async (req, res) => {
+  let result = await LoingService(req, res);
+  return res.status(200).json(result);
+};
 
 //UserOTP....................................................
 export const UserOTP = async (req, res) => {

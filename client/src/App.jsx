@@ -18,7 +18,9 @@ import UpdateServicePage from "./commponent/admin/Admin-pages/update-service-pag
 import ReadTeamPage from "./commponent/admin/Admin-pages/Team-Page/ReadTeamPage";
 import CreateTeamPage from "./commponent/admin/Admin-pages/Team-Page/CreateTeamPage";
 import UpdateTeamPage from "./commponent/admin/admin-team/UpdateTeamPage";
-import AdminDashboardPage from './commponent/admin/dashboard/AdminDashboardPage';
+import AdminDashboardPage from "./commponent/admin/dashboard/AdminDashboardPage";
+import RegisterForm from "./commponent/users/RegisterForm";
+import SubLogin from "./commponent/users/SubLogin";
 
 // Dashboard Components
 const App = () => {
@@ -31,12 +33,15 @@ const App = () => {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/Sublogin" element={<SubLogin />} />
+
         <Route path="/login" element={<LoginPage />} />
         <Route path="/otp" element={<OtpPage />} />
 
         <Route path="/*" element={<NotFound />} />
 
-        {/* Dashboard Routes (Wrapped in DashboardLayout) */}
+        {/* Dashboard Routes (Wrapped in DashboardLayout) s*/}
         <Route
           path="/dashboard"
           element={

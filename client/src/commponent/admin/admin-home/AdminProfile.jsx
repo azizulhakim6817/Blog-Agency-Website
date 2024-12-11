@@ -16,7 +16,7 @@ const AdminProfile = () => {
     sessionStorage.clear();
     localStorage.clear();
     Cookies.remove("token");
-    Navigate("/login");
+    Navigate("/SubLogin");
     toast.success("Logout Succsssfully");
   };
 
