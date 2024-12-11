@@ -1,0 +1,63 @@
+/* Button & hover colors....................................................... */
+.btnButton {
+  background-image: linear-gradient(to right, #ffd349, #ffd349);
+  border-radius: 20px;
+}
+.btnButton:hover {
+  background-image: linear-gradient(to right, #fad66a, #f7d36a);
+  color: white;
+}
+
+/* logo size.......................................................................... */
+.navbar-brand img {
+  height: 40px !important;
+  width: 85px !important ;
+}
+/* text h5 color ................................................ */
+.colorText {
+  color: #f5b82c;
+}
+
+/* About component...........................*/
+.carouselCotaint {
+  margin-top: 122px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: black;
+}
+
+.slick-arrow {
+  background: #f5b82c !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 40px !important;
+  color: black;
+}
+
+.slick-prev:before {
+  background: #f5b82c !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 40px !important;
+  color: black;
+}
+.opacity {
+  opacity: 80% !important; /* Fully opaque */
+}
+.opacity:hover {
+  opacity: 100% !important; /* Fully opaque */
+}
+/* .hoverColor:hover {
+  color: rgb(255, 255, 255) !important;
+} */
+/* about component indicator below */
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: #f9ba0c !important;
+  font-size: 30px !important;
+}
+
+.slick-dots li button:before {
+  font-size: 30px !important;
+
+}

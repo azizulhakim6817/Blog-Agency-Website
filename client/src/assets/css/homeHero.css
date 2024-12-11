@@ -1,0 +1,60 @@
+/* General Styling */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #f0f2f5 !important;
+}
+
+/* Banner Container */
+.banner-container {
+  width: 100%;
+  height: 70vh; /* Adjust banner height as needed */
+  position: relative;
+}
+
+/* Banner Image */
+.banner-image {
+  background-image: url("https://i.ibb.co.com/fkm7DL7/Yellow-and-Black-Simple-Marketing-Linked-In-Article-Cover-Image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  position: relative;
+}
+
+/* Overlay Content */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+  color: white;
+}
+
+.navFixed {
+  background-color: white !important;
+  height: 100vh !important;
+}
+
+.profileItem {
+  position: absolute;
+  bottom: -200px;
+}
+.NavbarNav {
+  margin-top: 100px !important;
+}
+
+@media (max-width: 992px) {
+  .navFixed {
+    background-color: white !important;
+    height: auto !important;
+  }
+
+  .profileItem {
+    position: relative !important;
+    bottom: 0px !important;
+  }
+}
