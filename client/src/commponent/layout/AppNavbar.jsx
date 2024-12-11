@@ -66,7 +66,7 @@ const AppNavbar = () => {
       {/* Navbar */}
       <nav className="navbar sticky-top navbar-expand-lg bg-white shadow-sm">
         <div className="container">
-          {/* Logo */}
+          {/* Logo ........................*/}
           <Link to="/" className="navbar-brand">
             <img src={logo} alt="Logo" width="96px" className="img-fluid" />
           </Link>
