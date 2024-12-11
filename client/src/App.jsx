@@ -51,7 +51,7 @@ const App = () => {
           }
         />
 
-        {/* Admin Blogs.............................. */}
+        {/* Admin Blogs .............................. */}
         <Route
           path={"/blog-page"}
           element={

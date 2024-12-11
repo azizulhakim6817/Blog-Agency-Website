@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import BlogStore from "./../../../../store/BlogStore";
+import { BiEdit } from "react-icons/bi";
+import { MdDeleteForever } from "react-icons/md";
 
 const ReadBlogComponent = () => {
   const { BlogList, BlogListRequest, DeleteBlogRequest } = BlogStore();
@@ -64,19 +66,21 @@ const ReadBlogComponent = () => {
                     />
                   </td>
                   <td>
-                    <Link
-                      to={`/update-blogs-page/${item._id}`}
-                      className="btn btn-success btn-sm mx-2"
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      type="button"
-                      className="btn btn-danger btn-sm"
-                      onClick={() => DeleteButton(item?._id)}
-                    >
-                      Delete
-                    </button>
+                    <div className=" d-flex justify-content-center">
+                      <Link
+                        to={`/update-blogs-page/${item._id}`}
+                        className="btn text-info"
+                      >
+                        <BiEdit className=" fs-3" />
+                      </Link>
+                      <button
+                        type="button"
+                        className="btn text-danger"
+                        onClick={() => DeleteButton(item?._id)}
+                      >
+                        <MdDeleteForever className=" fs-3" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

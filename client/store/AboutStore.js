@@ -50,12 +50,19 @@ const TeamStore = create((set) => ({
   },
 
   //!--Delete request ----------------------------------------
+
   DeleteTeamRequest: async (id) => {
     try {
-      let url = `${baseURL}team-delete/${id}`;
-      await axios.get(url, { headers: { token: Cookies.get("token") } });
-    } catch (err) {
-      unauthorized(err.response.status);
+      let res = await axios.get(`${baseURL}team-delete/${id}`, {
+        headers: {
+          token: Cookies.get("token"),
+        },
+      });
+      if (res.data["status"] === "success") {
+        set({ TeamsList: res.data["data"] });
+      }
+    } catch (error) {
+      console.error("Error deleting blog:", error);
     }
   },
 

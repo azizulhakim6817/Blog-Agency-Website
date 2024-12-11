@@ -34,7 +34,10 @@ const Service = () => {
                   alt={item.name}
                 />
                 <div className="card-body d-flex flex-column">
-                  <h5 className="card-title fw-bold">{item.name}</h5>
+                  <p className="card-title text-secondary">{item?.provider}</p>
+                  <h5 className="card-title fw-bold">
+                    {item.name.slice(0, 20)}
+                  </h5>
                   <p className="card-text">{item.description.slice(0, 60)}</p>
                   <div className="mt-auto">
                     <button

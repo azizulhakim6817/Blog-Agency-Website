@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import NoData from "../layout/NoData.jsx";
 import BlogStore from "./../../../store/BlogStore";
+import { convertToLocalTime } from "./../../../utility/TimeStamps";
 
 const Blog = () => {
   const { BlogList, BlogListRequest } = BlogStore();
@@ -8,7 +9,7 @@ const Blog = () => {
   useEffect(() => {
     (async () => {
       await BlogListRequest();
-    })()
+    })();
   }, []);
 
   return (
@@ -32,10 +33,15 @@ const Blog = () => {
               <div className="card shadow-lg">
                 <img src={item.image} className="card-img-top" alt="blogs" />
                 <div className="card-body">
-                  <h5 className="card-title fw-bold">{item.title}</h5>
-                  <p className="card-title  ">
-                    Date: {item.createdAt.slice(0, 20)}
-                  </p>
+                  <h5 className="card-title fw-bold">
+                    {item.title.slice(0, 20)}
+                  </h5>
+                  <div className=" d-flex justify-content-between">
+                    <p className="card-title text-secondary ">
+                      {convertToLocalTime(item?.createdAt)}
+                    </p>
+                    <p className="text-secondary">{item?.author}</p>
+                  </div>
                   <p className="card-text">{item.description.slice(0, 60)}</p>
                   <div className="d-flex justify-content-start">
                     <button

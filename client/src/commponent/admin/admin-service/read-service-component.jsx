@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import NoData from "../../layout/NoData.jsx";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { BiEdit } from "react-icons/bi";
+import { MdDeleteForever } from "react-icons/md";
 
 const ReadServiceComponent = () => {
   const { ServiceList, ServiceRequest, DeleteServiceRequest } = ServiceStore();
@@ -66,15 +68,15 @@ const ReadServiceComponent = () => {
                     <div className="d-flex gap-2">
                       <Link
                         to={`/UpdateServicePage/${item?._id}`}
-                        className="btn btn-success btn-sm"
+                        className="btn text-info"
                       >
-                        Edit
+                        <BiEdit className=" fs-3" />
                       </Link>
                       <button
-                        className="btn btn-danger btn-sm"
+                        className="btn text-danger"
                         onClick={() => DeleteButton(item?._id)}
                       >
-                        Delete
+                        <MdDeleteForever className=" fs-3" />
                       </button>
                     </div>
                   </td>

@@ -27,7 +27,7 @@ export const readServices = async (req, res) => {
   }
 };
 
-//! Update a service.............................................
+//! Update a team.............................................
 export const updateServices = async (req, res) => {
   let teamdID = req.params.teamdID;
   let reqBody = req.body;
@@ -46,10 +46,10 @@ export const updateServices = async (req, res) => {
   }
 };
 
-//! Delete a service.........................................
+//! Delete a team.........................................
 export const deleteServices = async (req, res) => {
-  const userID = req.params.userID;
-  let query = { user_id: userID };
+  const teamdID = req.params.teamdID;
+  let query = { _id: teamdID };
 
   try {
     let data = await TeamModel.deleteOne(query);
