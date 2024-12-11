@@ -98,7 +98,7 @@ const AppNavbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/service-page">
+                <Link className="nav-link" to="/service">
                   Service
                 </Link>
               </li>
