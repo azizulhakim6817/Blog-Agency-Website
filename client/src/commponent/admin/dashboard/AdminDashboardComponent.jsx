@@ -27,26 +27,29 @@ const AdminDashboardComponent = () => {
         <div className=" row ">
           <div className=" col-lg-4 ">
             <div className=" bg-white shadow rounded p-2">
-              <div>
-                <FaServicestack className=" fs-4 " />
+              <div className=" d-flex">
+                <FaServicestack className=" fs-4 me-3" />
+                <p className="colorText fw-bold mt-0 ">SERVICES</p>
               </div>
-              <div className=" fs-4 text-end">{ServiceList?.length}</div>
+              <div className=" fs-4 text-end me-3">{ServiceList?.length}</div>
             </div>
           </div>
           <div className=" col-lg-4">
             <div className=" bg-white shadow rounded p-2">
-              <div>
-                <RiBloggerLine className=" fs-4" />
+              <div className=" d-flex">
+                <RiBloggerLine className=" fs-4 me-3" />
+                <p className="colorText fw-bold mt-0  ">TEAMS</p>
               </div>
-              <div className=" fs-4 text-end">{TeamsList?.length}</div>
+              <div className=" fs-4 text-end me-3">{TeamsList?.length}</div>
             </div>
           </div>
           <div className=" col-lg-4 ">
             <div className=" bg-white shadow rounded p-2">
-              <div>
-                <FaUsers className=" fs-4" />
+              <div className=" d-flex">
+                <FaUsers className=" fs-4 me-3" />
+                <p className="colorText fw-bold mt-0 ">BLOGS</p>
               </div>
-              <div className=" fs-4 text-end">{BlogList?.length}</div>
+              <div className=" fs-4 text-end me-3">{BlogList?.length}</div>
             </div>
           </div>
         </div>
