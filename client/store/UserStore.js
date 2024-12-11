@@ -3,6 +3,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { getEmail, setEmail } from "../utility/utility";
 
+let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+
 const UserStore = create((set) => ({
   /*Login............................................ */
 
@@ -19,7 +21,7 @@ const UserStore = create((set) => ({
   isFormSubmit: false,
   UserOTPRequest: async (email) => {
     set({ isFormSubmit: true });
-    let res = await axios.get(`http://localhost:8000/api/UserOTP/${email}`);
+    let res = await axios.get(`${baseURL}/UserOTP/${email}`);
     setEmail(email);
     set({ isFormSubmit: false });
     return res.data["status"] === "success";
@@ -28,7 +30,7 @@ const UserStore = create((set) => ({
   /* Logout........................................................... */
   UserLogoutequest: async () => {
     set({ isFormSubmit: true });
-    let res = await axios.get(`http://localhost:8000/api/UserLogout`, {
+    let res = await axios.get(`${baseURL}UserLogout`, {
       headers: { token: Cookies.get("token") },
     });
     set({ isFormSubmit: false });
@@ -54,9 +56,7 @@ const UserStore = create((set) => ({
   VerifyLoginRequest: async (otp) => {
     set({ isFormSubmit: true });
     let email = getEmail();
-    let res = await axios.get(
-      `http://localhost:8000/api/VerifyLogin/${email}/${otp}`
-    );
+    let res = await axios.get(`${baseURL}VerifyLogin/${email}/${otp}`);
     console.log(res);
 
     if (res.data["status"] === "success") {

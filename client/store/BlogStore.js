@@ -2,10 +2,12 @@ import { create } from "zustand";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+
 const BlogStore = create((set) => ({
   BlogList: null,
   BlogListRequest: async () => {
-    let res = await axios.get(`http://localhost:8000/api/readBlog`);
+    let res = await axios.get(`${baseURL}readBlog`);
     if (res.data["status"] === "success") {
       set({ BlogList: res.data.data });
     }
@@ -33,15 +35,11 @@ const BlogStore = create((set) => ({
   // Create a new blog
   CreateBlogRequest: async (postBody) => {
     try {
-      let res = await axios.post(
-        "http://localhost:8000/api/creat-blog",
-        postBody,
-        {
-          headers: {
-            token: Cookies.get("token"),
-          },
-        }
-      );
+      let res = await axios.post(`${baseURL}creat-blog`, postBody, {
+        headers: {
+          token: Cookies.get("token"),
+        },
+      });
       console.log(res);
       if (res.data["status"] === "success") {
         set({ BlogList: res.data["data"] });
@@ -55,7 +53,7 @@ const BlogStore = create((set) => ({
   updateBlogRequest: async (id, reqBody) => {
     try {
       console.log(id);
-      let url = `http://localhost:8000/api/blog-update/${id}`;
+      let url = `${baseURL}blog-update/${id}`;
       let res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });
@@ -69,16 +67,13 @@ const BlogStore = create((set) => ({
   // Delete a blog
   DeleteBlogRequest: async (BlogId) => {
     try {
-      let res = await axios.get(
-        `http://localhost:8000/api/blog-delete/${BlogId}`,
-        {
-          headers: {
-            token: Cookies.get("token"),
-          },
-        }
-      );
+      let res = await axios.get(`${baseURL}blog-delete/${BlogId}`, {
+        headers: {
+          token: Cookies.get("token"),
+        },
+      });
       if (res.data["status"] === "success") {
-        set({ BlogList: res.data["data"] }); // Update BlogList after deletion
+        set({ BlogList: res.data["data"] });
       }
     } catch (error) {
       console.error("Error deleting blog:", error);

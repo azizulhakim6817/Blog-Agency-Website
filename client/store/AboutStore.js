@@ -3,11 +3,13 @@ import axios from "axios";
 import { unauthorized } from "../utility/utility.js";
 import Cookies from "js-cookie";
 
+let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+
 //!-----create-team-------------------------------------------
 const TeamStore = create((set) => ({
   TeamsList: null,
   TeamsListRequest: async () => {
-    let res = await axios.get(`http://localhost:8000/api/read-teams`);
+    let res = await axios.get(`${baseURL}read-teams`);
     if (res.data["status"] === "success") {
       set({ TeamsList: res.data["data"] });
     }
@@ -35,11 +37,9 @@ const TeamStore = create((set) => ({
   //! create-team -------------------------------------------------
   CreateTeamRequest: async (postBody) => {
     try {
-      let res = await axios.post(
-        "http://localhost:8000/api/creat-teams",
-        postBody,
-        { headers: { token: Cookies.get("token") } }
-      );
+      let res = await axios.post(`${baseURL}creat-teams`, postBody, {
+        headers: { token: Cookies.get("token") },
+      });
 
       if (res.data["status"] === success) {
         set({ TeamsList: res.data["data"] });
@@ -52,7 +52,7 @@ const TeamStore = create((set) => ({
   //!--Delete request ----------------------------------------
   DeleteTeamRequest: async (id) => {
     try {
-      let url = `http://localhost:8000/api/team-delete/${id}`;
+      let url = `${baseURL}team-delete/${id}`;
       await axios.get(url, { headers: { token: Cookies.get("token") } });
     } catch (err) {
       unauthorized(err.response.status);
@@ -62,7 +62,7 @@ const TeamStore = create((set) => ({
   //!---team-update-----------------------------------------------
   UpdateTeamRequest: async (id, reqBody) => {
     try {
-      let url = `http://localhost:8000/api/team-update/${id}`;
+      let url = `${baseURL}team-update/${id}`;
       let res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });

@@ -3,10 +3,12 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { unauthorized } from "../utility/utility.js";
 
+let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+
 const ServiceStore = create((set) => ({
   ServiceList: null,
   ServiceRequest: async () => {
-    let res = await axios.get(`http://localhost:8000/api/readService`);
+    let res = await axios.get(`${baseURL}readService`);
 
     if (res.data["status"] === "success") {
       set({ ServiceList: res.data["data"] });
@@ -30,11 +32,9 @@ const ServiceStore = create((set) => ({
 
   CreateServiceRequest: async (postBody) => {
     try {
-      let res = await axios.post(
-        "http://localhost:8000/api/creat-services",
-        postBody,
-        { headers: { token: Cookies.get("token") } }
-      );
+      let res = await axios.post(`${baseURL}creat-services`, postBody, {
+        headers: { token: Cookies.get("token") },
+      });
       if (res.data["status"] === "success") {
         set({ ServiceList: res.data["data"] });
       }
@@ -45,7 +45,7 @@ const ServiceStore = create((set) => ({
 
   updateServiceRequest: async (id, reqBody) => {
     try {
-      let url = `http://localhost:8000/api/services-update/${id}`;
+      let url = `${baseURL}services-update/${id}`;
       let res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });
@@ -57,7 +57,7 @@ const ServiceStore = create((set) => ({
   //   -----------------------------------Delete request -----
   DeleteServiceRequest: async (id) => {
     try {
-      let url = `http://localhost:8000/api/services-delete/${id}`;
+      let url = `${baseURL}services-delete/${id}`;
       await axios.get(url, { headers: { token: Cookies.get("token") } });
     } catch (err) {
       unauthorized(err.response.status);
