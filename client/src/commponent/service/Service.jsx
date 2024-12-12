@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import NoData from "./../layout/NoData";
 import ServiceStore from "../../../store/ServiceStore";
+import { convertToLocalTime } from "../../../utility/TimeStamps";
 
 const Service = () => {
   const { ServiceList, ServiceRequest } = ServiceStore(); // Destructure state and API call function
@@ -34,10 +35,17 @@ const Service = () => {
                   alt={item.name}
                 />
                 <div className="card-body d-flex flex-column">
-                  <p className="card-title text-secondary">{item?.provider}</p>
+                  <div className=" d-flex justify-content-between">
+                    <p className="text-secondary">{item?.provider}</p>
+                    <p className="card-title text-secondary ">
+                      {convertToLocalTime(item?.createdAt)}
+                    </p>
+                  </div>
+
                   <h5 className="card-title fw-bold">
                     {item.name.slice(0, 20)}
                   </h5>
+
                   <p className="card-text">{item.description.slice(0, 60)}</p>
                   <div className="mt-auto">
                     <button

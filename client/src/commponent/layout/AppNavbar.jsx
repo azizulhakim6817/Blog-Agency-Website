@@ -1,25 +1,8 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-import UserStore from "../../../store/UserStore";
-import Cookies from "js-cookie";
 
 const AppNavbar = () => {
-  const navigate = useNavigate();
-  const { isLogin, UserLogoutequest } = UserStore();
-
-  const onLogout = async () => {
-    try {
-      await UserLogoutequest();
-      sessionStorage.clear();
-      localStorage.clear();
-      Cookies.remove("token");
-      navigate("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
-
   return (
     <>
       {/* Top Bar */}
@@ -27,7 +10,7 @@ const AppNavbar = () => {
         <div className="container">
           <div className="row align-items-center">
             {/* Contact Details */}
-            <div className="col-md-6 d-flex justify-content-start">
+            <div className="col-lg-6 col-md-12 d-flex justify-content-center justify-content-lg-start mb-2 mb-lg-0">
               <div className="me-3">
                 <i className="bi bi-envelope"></i>
                 <a
@@ -48,7 +31,7 @@ const AppNavbar = () => {
               </div>
             </div>
             {/* Social Media Icons */}
-            <div className="col-md-6 d-flex justify-content-md-end mt-2 mt-md-0">
+            <div className="col-lg-6 col-md-12 d-flex justify-content-center justify-content-lg-end">
               <a href="#" className="text-white mx-2">
                 <i className="bi bi-whatsapp"></i>
               </a>
@@ -66,10 +49,10 @@ const AppNavbar = () => {
       {/* Navbar */}
       <nav className="navbar sticky-top navbar-expand-lg bg-white shadow-sm">
         <div className="container">
-          {/* Logo ........................*/}
-          <Link to="/" className="navbar-brand">
+          {/* Logo */}
+          <NavLink to="/" className="navbar-brand">
             <img src={logo} alt="Logo" width="96px" className="img-fluid" />
-          </Link>
+          </NavLink>
 
           {/* Navbar Toggle Button */}
           <button
@@ -84,36 +67,61 @@ const AppNavbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* Navbar Links................. . */}
+          {/* Navbar Links */}
           <div
             className="collapse navbar-collapse justify-content-end"
             id="navbarToggler"
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link active" to="/">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
+                  to="/"
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/service">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
+                  to="/service"
+                >
                   Service
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/blog">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
+                  to="/blog"
+                >
                   Blog
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
+                  to="/about"
+                >
                   About
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contact">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
+                  to="/contact"
+                >
                   Contact
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -27,9 +27,9 @@ const AdminHeader = () => {
               <li className="nav-item">
                 <NavLink
                   to="/dashboard"
-                  className="nav-link"
-                  activeClassName="active"
-                  aria-current="page"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
                 >
                   Home
                 </NavLink>
@@ -37,29 +37,31 @@ const AdminHeader = () => {
               <li className="nav-item">
                 <NavLink
                   to="/service-page"
-                  className="nav-link"
-                  activeClassName="active"
-                  aria-current="page"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
                 >
                   Service
                 </NavLink>
               </li>
               <li className="nav-item">
+                {/*  */}
                 <NavLink
                   to="/blog-page"
-                  className="nav-link"
-                  activeClassName="active"
-                  aria-current="page"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
                 >
                   Blogs
                 </NavLink>
+                {/*  */}
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="/team-page" // Assuming a teams page exists
-                  className="nav-link"
-                  activeClassName="active"
-                  aria-current="page"
+                  to="/team-page"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "colorText" : ""}`
+                  }
                 >
                   Teams
                 </NavLink>

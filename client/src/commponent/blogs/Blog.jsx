@@ -37,10 +37,10 @@ const Blog = () => {
                     {item.title.slice(0, 20)}
                   </h5>
                   <div className=" d-flex justify-content-between">
+                    <p className="text-secondary">{item?.author}</p>
                     <p className="card-title text-secondary ">
                       {convertToLocalTime(item?.createdAt)}
                     </p>
-                    <p className="text-secondary">{item?.author}</p>
                   </div>
                   <p className="card-text">{item.description.slice(0, 60)}</p>
                   <div className="d-flex justify-content-start">
