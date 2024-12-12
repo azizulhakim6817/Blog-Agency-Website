@@ -22,7 +22,7 @@ import AdminDashboardPage from "./commponent/admin/dashboard/AdminDashboardPage"
 import RegisterForm from "./commponent/users/RegisterForm";
 import SubLogin from "./commponent/users/SubLogin";
 
-// Dashboard Components
+
 const App = () => {
   return (
     <Router>
