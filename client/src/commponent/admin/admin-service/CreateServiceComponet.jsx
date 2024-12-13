@@ -49,20 +49,7 @@ const CreateServiceComponent = () => {
           />
         </div>
 
-        {/* Provider Name */}
-        <div className="mb-3">
-          <label htmlFor="providerInput" className="form-label fw-semibold">
-            Provider Name:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="providerInput"
-            placeholder="Enter provider name"
-            value={ServiceFormValue.provider}
-            onChange={(e) => ServiceFormOnChange("provider", e.target.value)}
-          />
-        </div>
+        
 
         {/* Description */}
         <div className="mb-3">
@@ -78,19 +65,7 @@ const CreateServiceComponent = () => {
             onChange={(e) => ServiceFormOnChange("description", e.target.value)}
           />
         </div>
-        {/*  date */}
-        <div className="mb-3">
-          <label htmlFor="dateInput" className="form-label fw-semibold">
-            Date :
-          </label>
-          <input
-            id="dateInput"
-            type="date"
-            className="form-control"
-            value={ServiceFormValue.date}
-            onChange={(e) => ServiceFormOnChange("date", e.target.value)}
-          />
-        </div>
+        
         {/* Upload Image */}
         <div className="mb-3">
           <label htmlFor="imageInput" className="form-label fw-semibold">

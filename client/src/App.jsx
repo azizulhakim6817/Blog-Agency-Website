@@ -41,7 +41,7 @@ const App = () => {
         <Route path="/otp" element={<OtpPage />} />
         <Route path="/*" element={<NotFound />} />
 
-        {/* Dashboard Routes (Wrapped in DashboardLayout) */}
+        
         <Route
           path="/dashboard"
           element={
