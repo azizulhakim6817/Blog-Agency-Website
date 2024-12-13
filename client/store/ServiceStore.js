@@ -3,28 +3,33 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { unauthorized } from "../utility/utility.js";
 
-<<<<<<< HEAD
-let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
-=======
-let baseURL = "https://blog-agency-website-five.vercel.app/api/";
->>>>>>> 9f9600c17b22a24f70278a53a7228e5dc610b6c6
+// Resolve the merge conflict
+let baseURL = "https://blog-agency-website-lake.vercel.app/api/"; 
 
 const ServiceStore = create((set) => ({
   ServiceList: null,
-  ServiceRequest: async () => {
-    let res = await axios.get(`${baseURL}readService`);
 
-    if (res.data["status"] === "success") {
-      set({ ServiceList: res.data["data"] });
+  // Fetch the list of services
+  ServiceRequest: async () => {
+    try {
+      const res = await axios.get(`${baseURL}readService`);
+      if (res.data.status === "success") {
+        set({ ServiceList: res.data.data });
+      }
+    } catch (error) {
+      console.error("Error fetching services:", error);
     }
   },
-  // ------------------------create service request --------------------------
+
+  // Store for new service form values
   ServiceFormValue: {
     name: "",
     description: "",
     provider: "",
     image: "",
   },
+
+  // Update the form value on input change
   ServiceFormOnChange: (name, value) => {
     set((state) => ({
       ServiceFormValue: {
@@ -34,37 +39,42 @@ const ServiceStore = create((set) => ({
     }));
   },
 
+  // Create a new service
   CreateServiceRequest: async (postBody) => {
     try {
-      let res = await axios.post(`${baseURL}creat-services`, postBody, {
+      const res = await axios.post(`${baseURL}creat-services`, postBody, {
         headers: { token: Cookies.get("token") },
       });
-      if (res.data["status"] === "success") {
-        set({ ServiceList: res.data["data"] });
+      if (res.data.status === "success") {
+        set({ ServiceList: res.data.data });
       }
     } catch (error) {
-      console.error("Error creating blog:", error);
+      console.error("Error creating service:", error);
     }
   },
 
+  // Update an existing service
   updateServiceRequest: async (id, reqBody) => {
     try {
-      let url = `${baseURL}services-update/${id}`;
-      let res = await axios.post(url, reqBody, {
+      const url = `${baseURL}services-update/${id}`;
+      const res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });
-      return res.data["status"] === "success";
+      return res.data.status === "success";
     } catch (err) {
-      unauthorized(err.response.status);
+      console.error("Error updating service:", err);
+      unauthorized(err.response.status); // Ensure the `unauthorized` function is defined or handle errors accordingly
     }
   },
-  //   -----------------------------------Delete request -----
+
+  // Delete a service
   DeleteServiceRequest: async (id) => {
     try {
-      let url = `${baseURL}services-delete/${id}`;
+      const url = `${baseURL}services-delete/${id}`;
       await axios.get(url, { headers: { token: Cookies.get("token") } });
     } catch (err) {
-      unauthorized(err.response.status);
+      console.error("Error deleting service:", err);
+      unauthorized(err.response.status); // Ensure the `unauthorized` function is defined or handle errors accordingly
     }
   },
 }));

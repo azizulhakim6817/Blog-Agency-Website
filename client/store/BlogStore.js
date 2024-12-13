@@ -2,18 +2,21 @@ import { create } from "zustand";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-<<<<<<< HEAD
-let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
-=======
-let baseURL = "https://blog-agency-website-five.vercel.app/api/";
->>>>>>> 9f9600c17b22a24f70278a53a7228e5dc610b6c6
+
+let baseURL = "https://blog-agency-website-lake.vercel.app/api/"; 
 
 const BlogStore = create((set) => ({
   BlogList: null,
+
+  // Fetch the list of blogs
   BlogListRequest: async () => {
-    let res = await axios.get(`${baseURL}readBlog`);
-    if (res.data["status"] === "success") {
-      set({ BlogList: res.data.data });
+    try {
+      const res = await axios.get(`${baseURL}readBlog`);
+      if (res.data.status === "success") {
+        set({ BlogList: res.data.data });
+      }
+    } catch (error) {
+      console.error("Error fetching blog list:", error);
     }
   },
 
@@ -37,14 +40,13 @@ const BlogStore = create((set) => ({
   // Create a new blog
   CreateBlogRequest: async (postBody) => {
     try {
-      let res = await axios.post(`${baseURL}creat-blog`, postBody, {
+      const res = await axios.post(`${baseURL}creat-blog`, postBody, {
         headers: {
           token: Cookies.get("token"),
         },
       });
-      console.log(res);
-      if (res.data["status"] === "success") {
-        set({ BlogList: res.data["data"] });
+      if (res.data.status === "success") {
+        set({ BlogList: res.data.data });
       }
     } catch (error) {
       console.error("Error creating blog:", error);
@@ -54,43 +56,48 @@ const BlogStore = create((set) => ({
   // Update an existing blog
   updateBlogRequest: async (id, reqBody) => {
     try {
-      console.log(id);
-      let url = `${baseURL}blog-update/${id}`;
-      let res = await axios.post(url, reqBody, {
+      const url = `${baseURL}blog-update/${id}`;
+      const res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });
 
-      return res.data["status"] === "success";
+      return res.data.status === "success";
     } catch (err) {
-      unauthorized(err.response.status);
+      console.error("Error updating blog:", err);
+      // Handle unauthorized access here if needed
     }
   },
 
-  // Delete a blogs
+  // Delete a blog
   DeleteBlogRequest: async (BlogId) => {
     try {
-      let res = await axios.get(`${baseURL}blog-delete/${BlogId}`, {
+      const res = await axios.get(`${baseURL}blog-delete/${BlogId}`, {
         headers: {
           token: Cookies.get("token"),
         },
       });
-      if (res.data["status"] === "success") {
-        set({ BlogList: res.data["data"] });
+      if (res.data.status === "success") {
+        set({ BlogList: res.data.data });
       }
     } catch (error) {
       console.error("Error deleting blog:", error);
     }
   },
-  // Blog Details dsafafdfa dafadsf................................................
+
+  // Fetch blog details
   BlogDetails: null,
   BlogDetailsRequest: async (BlogId) => {
-    let res = await axios.get(`${baseURL}BlogsDetails/${BlogId}`, {
-      headers: {
-        token: Cookies.get("token"),
-      },
-    });
-    if (res.data["status"] === "success") {
-      set({ BlogDetails: res.data["data"] });
+    try {
+      const res = await axios.get(`${baseURL}BlogsDetails/${BlogId}`, {
+        headers: {
+          token: Cookies.get("token"),
+        },
+      });
+      if (res.data.status === "success") {
+        set({ BlogDetails: res.data.data });
+      }
+    } catch (error) {
+      console.error("Error fetching blog details:", error);
     }
   },
 }));

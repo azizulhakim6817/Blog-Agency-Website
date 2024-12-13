@@ -3,16 +3,13 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { getEmail, setEmail } from "../utility/utility";
 
-<<<<<<< HEAD
-let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
-=======
-let baseURL = "https://blog-agency-website-five.vercel.app/api/";
->>>>>>> 9f9600c17b22a24f70278a53a7228e5dc610b6c6
+// Resolve the merge conflict
+let baseURL = "https://blog-agency-website-lake.vercel.app/api/"; 
 
 const UserStore = create((set) => ({
-  /*Login............................................ */
-  RegistarFormData: { email: "", passsword: "", fullName: " " },
-  ResiterFormOnChange: async (name, value) => {
+  // Register Form
+  RegistarFormData: { email: "", password: "", fullName: "" },
+  RegistarFormOnChange: (name, value) => {
     set((state) => ({
       RegistarFormData: {
         ...state.RegistarFormData,
@@ -21,20 +18,20 @@ const UserStore = create((set) => ({
     }));
   },
 
-  isFormSubmit: false,
+  isRegisterFormSubmitting: false, // Renamed to avoid duplication
   RegistarRequest: async (reqBody) => {
-    set({ isFormSubmit: true });
+    set({ isRegisterFormSubmitting: true });
     let res = await axios.post(`${baseURL}Register`, reqBody);
-    set({ isFormSubmit: false });
+    set({ isRegisterFormSubmitting: false });
     if (res.data["status"] === "success") {
       set({ RegistarFormData: res.data.data });
-      set({ isFormSubmit: false });
     }
     return res.data["status"] === "success";
   },
 
-  LogingFormData: { email: "", passsword: "" },
-  LoginFormOnChange: async (name, value) => {
+  // Login Form
+  LogingFormData: { email: "", password: "" },
+  LoginFormOnChange: (name, value) => {
     set((state) => ({
       LogingFormData: {
         ...state.LogingFormData,
@@ -43,30 +40,30 @@ const UserStore = create((set) => ({
     }));
   },
 
-  isFormSubmit: false,
+  isLoginFormSubmitting: false, // Renamed to avoid duplication
   LoginRequest: async (reqBody) => {
-    set({ isFormSubmit: true });
+    set({ isLoginFormSubmitting: true });
     let res = await axios.post(`${baseURL}Login`, reqBody);
-    set({ isFormSubmit: false });
+    set({ isLoginFormSubmitting: false });
     if (res.data["status"] === "success") {
       Cookies.set("token", res.data.token);
-      set({ isFormSubmit: false });
       set({ LogingFormData: res.data.data });
     }
     return res.data["status"] === "success";
   },
 
-  isFormSubmit: false,
+  // OTP Request
+  isOTPFormSubmitting: false, // Renamed to avoid duplication
   UserOTPRequest: async (email) => {
-    set({ isFormSubmit: true });
+    set({ isOTPFormSubmitting: true });
     let res = await axios.get(`${baseURL}/UserOTP/${email}`);
-    setEmail(email);
-    set({ isFormSubmit: false });
+    setEmail(email); // Ensure this function is defined in utility.js
+    set({ isOTPFormSubmitting: false });
     return res.data["status"] === "success";
   },
 
-  /* Logout........................................................... */
-  UserLogoutequest: async () => {
+  // Logout
+  UserLogoutRequest: async () => {
     set({ isFormSubmit: true });
     let res = await axios.get(`${baseURL}UserLogout`, {
       headers: { token: Cookies.get("token") },
@@ -75,14 +72,9 @@ const UserStore = create((set) => ({
     return res.data["status"] === "success";
   },
 
-  /* OTP verify request............................................ */
-  isLogin: () => {
-    const token = Cookies.get("token");
-    return !!token;
-  },
-
+  // OTP Verification
   OTPFormData: { otp: "" },
-  OTPFormOnChange: async (name, value) => {
+  OTPFormOnChange: (name, value) => {
     set((state) => ({
       OTPFormData: {
         ...state.OTPFormData,
@@ -93,7 +85,7 @@ const UserStore = create((set) => ({
 
   VerifyLoginRequest: async (otp) => {
     set({ isFormSubmit: true });
-    let email = getEmail();
+    let email = getEmail(); // Ensure this function is defined in utility.js
     let res = await axios.get(`${baseURL}VerifyLogin/${email}/${otp}`);
     console.log(res);
 
@@ -102,6 +94,12 @@ const UserStore = create((set) => ({
     }
     set({ isFormSubmit: false });
     return res.data["status"] === "success";
+  },
+
+  // Check if user is logged in
+  isLogin: () => {
+    const token = Cookies.get("token");
+    return !!token;
   },
 }));
 

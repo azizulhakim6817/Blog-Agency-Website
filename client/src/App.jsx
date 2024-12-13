@@ -21,10 +21,7 @@ import UpdateTeamPage from "./commponent/admin/admin-team/UpdateTeamPage";
 import AdminDashboardPage from "./commponent/admin/dashboard/AdminDashboardPage";
 import RegisterForm from "./commponent/users/RegisterForm";
 import SubLogin from "./commponent/users/SubLogin";
-<<<<<<< HEAD
-=======
-import BlogDetailsPage from "./pages/blogDetailsPage.jsx";
->>>>>>> 9f9600c17b22a24f70278a53a7228e5dc610b6c6
+import BlogDetailsPage from './pages/BlogDetailsPage';
 
 const App = () => {
   return (
@@ -40,13 +37,11 @@ const App = () => {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/Sublogin" element={<SubLogin />} />
-
         <Route path="/login" element={<LoginPage />} />
         <Route path="/otp" element={<OtpPage />} />
-
         <Route path="/*" element={<NotFound />} />
 
-        {/* Dashboard Routes (Wrapped in DashboardLayout) s*/}
+        {/* Dashboard Routes (Wrapped in DashboardLayout) */}
         <Route
           path="/dashboard"
           element={
@@ -56,7 +51,7 @@ const App = () => {
           }
         />
 
-        {/* Admin Blogs .............................. */}
+        {/* Admin Blogs Routes */}
         <Route
           path={"/blog-page"}
           element={
@@ -82,7 +77,7 @@ const App = () => {
           }
         />
 
-        {/*-------------service related route -------------*/}
+        {/* Service Related Routes */}
         <Route
           path="/service-page"
           element={
@@ -107,7 +102,8 @@ const App = () => {
             </PrivetRoutes>
           }
         />
-        {/* Team Create............................................ */}
+
+        {/* Team Create Routes */}
         <Route
           path="/team-page"
           element={
