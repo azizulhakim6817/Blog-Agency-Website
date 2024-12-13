@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
 
 const BlogStore = create((set) => ({
   BlogList: null,

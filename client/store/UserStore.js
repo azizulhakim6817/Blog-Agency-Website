@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { getEmail, setEmail } from "../utility/utility";
 
-let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
 
 const UserStore = create((set) => ({
   /*Login............................................ */

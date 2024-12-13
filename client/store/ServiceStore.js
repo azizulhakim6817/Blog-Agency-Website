@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { unauthorized } from "../utility/utility.js";
 
-let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
 
 const ServiceStore = create((set) => ({
   ServiceList: null,
