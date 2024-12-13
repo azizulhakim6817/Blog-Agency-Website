@@ -38,7 +38,7 @@ export const updateBlogService = async (req, res) => {
       new: true,
     });
     if (!blog) {
-      throw "Update is notfound!";
+      throw "Update is notfound !";
     }
 
     return { status: "success", data: blog };
