@@ -47,7 +47,7 @@ export const updateBlogService = async (req, res) => {
   }
 };
 
-//! Delete a blog.........................................
+//! Delete a blog.dddd........................................
 export const deleteBlogService = async (req, res) => {
   const blogID = req.params.blogID;
   let query = { _id: blogID };
