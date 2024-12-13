@@ -77,7 +77,7 @@ const BlogStore = create((set) => ({
       console.error("Error deleting blog:", error);
     }
   },
-  // Blog Details ................................................
+  // Blog Details dsafafdfa dafadsf................................................
   BlogDetails: null,
   BlogDetailsRequest: async (BlogId) => {
     let res = await axios.get(`${baseURL}BlogsDetails/${BlogId}`, {
