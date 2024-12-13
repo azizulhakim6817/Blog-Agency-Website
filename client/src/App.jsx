@@ -21,6 +21,10 @@ import UpdateTeamPage from "./commponent/admin/admin-team/UpdateTeamPage";
 import AdminDashboardPage from "./commponent/admin/dashboard/AdminDashboardPage";
 import RegisterForm from "./commponent/users/RegisterForm";
 import SubLogin from "./commponent/users/SubLogin";
+<<<<<<< HEAD
+=======
+import BlogDetailsPage from "./pages/blogDetailsPage.jsx";
+>>>>>>> 9f9600c17b22a24f70278a53a7228e5dc610b6c6
 
 const App = () => {
   return (
@@ -29,7 +33,9 @@ const App = () => {
         {/* Main Site Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/service" element={<ServicePage />} />
+        <Route path="/serviceDetails/:serviceID" element={<ServicePage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blogDetails/:blogID" element={<BlogDetailsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/register" element={<RegisterForm />} />

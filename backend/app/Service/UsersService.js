@@ -41,6 +41,7 @@ export const LoingService = async (req, res) => {
     let user = await UserModel.aggregate([
       { $match: { email: email, password: password } },
     ]);
+    console.log(user[0]._id);
     if (user) {
       let token = EncodeToken(user[0]["email"], user[0]["_id"]);
       let options = {

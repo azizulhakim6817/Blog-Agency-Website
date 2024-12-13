@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import NoData from "../layout/NoData.jsx";
 import BlogStore from "./../../../store/BlogStore";
 import { convertToLocalTime } from "./../../../utility/TimeStamps";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const { BlogList, BlogListRequest } = BlogStore();
@@ -44,12 +45,13 @@ const Blog = () => {
                   </div>
                   <p className="card-text">{item.description.slice(0, 60)}</p>
                   <div className="d-flex justify-content-start">
-                    <button
+                    <Link
+                      to={`/blogDetails/${item?._id}`}
                       type="button"
                       className="btn text-primary colorText p-0 m-0"
                     >
                       Read more
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

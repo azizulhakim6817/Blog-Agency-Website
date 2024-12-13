@@ -2,7 +2,11 @@ import { create } from "zustand";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+<<<<<<< HEAD
 let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
+=======
+let baseURL = "https://blog-agency-website-five.vercel.app/api/";
+>>>>>>> 9f9600c17b22a24f70278a53a7228e5dc610b6c6
 
 const BlogStore = create((set) => ({
   BlogList: null,
@@ -16,9 +20,7 @@ const BlogStore = create((set) => ({
   // Store for new blog form values
   BlogFormValue: {
     title: "",
-    author: "",
     description: "",
-    date: "",
     image: "", // Image URL or file path
   },
 
@@ -57,14 +59,14 @@ const BlogStore = create((set) => ({
       let res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });
-      console.log(res);
+
       return res.data["status"] === "success";
     } catch (err) {
       unauthorized(err.response.status);
     }
   },
 
-  // Delete a blog
+  // Delete a blogs
   DeleteBlogRequest: async (BlogId) => {
     try {
       let res = await axios.get(`${baseURL}blog-delete/${BlogId}`, {
@@ -77,6 +79,18 @@ const BlogStore = create((set) => ({
       }
     } catch (error) {
       console.error("Error deleting blog:", error);
+    }
+  },
+  // Blog Details dsafafdfa dafadsf................................................
+  BlogDetails: null,
+  BlogDetailsRequest: async (BlogId) => {
+    let res = await axios.get(`${baseURL}BlogsDetails/${BlogId}`, {
+      headers: {
+        token: Cookies.get("token"),
+      },
+    });
+    if (res.data["status"] === "success") {
+      set({ BlogDetails: res.data["data"] });
     }
   },
 }));

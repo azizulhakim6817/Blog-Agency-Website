@@ -3,25 +3,32 @@ import {
   readBlogService,
   deleteBlogService,
   updateBlogService,
+  BlogsDetailsService,
 } from "./../Service/BlogsService.js";
 
-//! create service........................................
+//! create Blog.....................................
 export const blog = async (req, res) => {
   let result = await createBlogService(req);
   return res.json(result);
 };
-//! Read Services service........................................
+//! Read Blogs.......................................
 export const readBlog = async (req, res) => {
   let result = await readBlogService(req);
   return res.json(result);
 };
-//! blog-update service........................................
+//! blog-update Blog....................................
 export const updateBlog = async (req, res) => {
   let result = await updateBlogService(req);
   return res.json(result);
 };
-//! create service........................................
+//! delete Blog........................................
 export const deleteBlog = async (req, res) => {
   let result = await deleteBlogService(req);
+  return res.json(result);
+};
+
+//! Details Blogs .........................................
+export const BlogsDetails = async (req, res) => {
+  let result = await BlogsDetailsService(req);
   return res.json(result);
 };

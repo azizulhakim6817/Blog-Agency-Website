@@ -50,21 +50,6 @@ const CreateBlogComponet = () => {
           />
         </div>
 
-        {/* Provider Name */}
-        <div className="mb-3">
-          <label htmlFor="authorName" className="form-label fw-semibold">
-            Author Name:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="authorName"
-            placeholder="Enter provider name"
-            value={BlogFormValue.author}
-            onChange={(e) => BlogFormOnChange("author", e.target.value)}
-          />
-        </div>
-
         {/* Description */}
         <div className="mb-3">
           <label htmlFor="descriptionInput" className="form-label fw-semibold">
@@ -80,19 +65,6 @@ const CreateBlogComponet = () => {
           />
         </div>
 
-        {/*  date */}
-        <div className="mb-3">
-          <label htmlFor="dateInput" className="form-label fw-semibold">
-            Date:
-          </label>
-          <input
-            id="dateInput"
-            type="date"
-            className="form-control"
-            value={BlogFormValue.date}
-            onChange={(e) => BlogFormOnChange("date", e.target.value)}
-          />
-        </div>
         {/* Upload Image */}
         <div className="mb-3">
           <label htmlFor="imageInput" className="form-label fw-semibold">
