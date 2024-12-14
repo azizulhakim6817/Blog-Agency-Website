@@ -3,7 +3,7 @@ import axios from "axios";
 import { unauthorized } from "../utility/utility.js";
 import Cookies from "js-cookie";
 
-let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+let baseURL = "https://blog-agency-website-five.vercel.app/api/";
 
 //!-----create-team-------------------------------------------
 const TeamStore = create((set) => ({

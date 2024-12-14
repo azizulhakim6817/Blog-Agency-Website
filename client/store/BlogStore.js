@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-let baseURL = "https://blog-agency-website-fawn.vercel.app/api/";
+let baseURL = "https://blog-agency-website-five.vercel.app/api/";
 
 const BlogStore = create((set) => ({
   BlogList: null,
@@ -55,7 +55,7 @@ const BlogStore = create((set) => ({
       let res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });
-      
+
       return res.data["status"] === "success";
     } catch (err) {
       unauthorized(err.response.status);
@@ -80,14 +80,11 @@ const BlogStore = create((set) => ({
   // Blog Details ................................................
   BlogDetails: null,
   BlogDetailsRequest: async (BlogId) => {
-    let res = await axios.get(
-      ` http://localhost:8000/api/BlogsDetails/${BlogId}`,
-      {
-        headers: {
-          token: Cookies.get("token"),
-        },
-      }
-    );
+    let res = await axios.get(`${baseURL}BlogsDetails/${BlogId}`, {
+      headers: {
+        token: Cookies.get("token"),
+      },
+    });
     if (res.data["status"] === "success") {
       set({ BlogDetails: res.data["data"] });
     }
