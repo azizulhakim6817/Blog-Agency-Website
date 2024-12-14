@@ -51,12 +51,62 @@ export const updateServices = async (req, res) => {
 //! Delete a service.........................................
 export const deleteServices = async (req, res) => {
   const serviceID = req.params.serviceID;
-  let query = {_id: serviceID };
+  let query = { _id: serviceID };
 
   try {
     let data = await Service.deleteOne(query);
     return { status: "success", data: data };
   } catch (e) {
     return { status: "error", error: e.toString() };
+  }
+};
+
+//! Details a service.........................................
+export const servicesDetailsService = async (req, res) => {
+  try {
+    let serviceID = new ObjectID(req.params.serviceID);
+    let MatchStage = { $match: { _id: serviceID } };
+
+    let joinWithBlogsStage = {
+      $lookup: {
+        from: "services",
+        localField: "_id",
+        foreignField: "_id",
+        as: "service",
+      },
+    };
+
+    let unwindUserStage = { $unwind: "$service" };
+
+    let BlogUserProjectionStage = {
+      $project: {
+        _id: 1,
+        name: 1,
+        provider: 1,
+        date: 1,
+        image: 1,
+        createdAt: 1,
+        description: 1,
+      },
+    };
+
+    let data = await Service.aggregate([
+      MatchStage,
+      joinWithBlogsStage,
+      unwindUserStage,
+      BlogUserProjectionStage,
+    ]);
+
+    return {
+      status: "success",
+      message: "Blog Detail Successfully",
+      data: data,
+    };
+  } catch (err) {
+    return {
+      status: "failed",
+      messages: "Blog Details Failed",
+      error: err.toString(),
+    };
   }
 };

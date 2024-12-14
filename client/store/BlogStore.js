@@ -16,9 +16,7 @@ const BlogStore = create((set) => ({
   // Store for new blog form values
   BlogFormValue: {
     title: "",
-    author: "",
     description: "",
-    date: "",
     image: "", // Image URL or file path
   },
 
@@ -57,7 +55,7 @@ const BlogStore = create((set) => ({
       let res = await axios.post(url, reqBody, {
         headers: { token: Cookies.get("token") },
       });
-      console.log(res);
+      
       return res.data["status"] === "success";
     } catch (err) {
       unauthorized(err.response.status);
@@ -77,6 +75,21 @@ const BlogStore = create((set) => ({
       }
     } catch (error) {
       console.error("Error deleting blog:", error);
+    }
+  },
+  // Blog Details ................................................
+  BlogDetails: null,
+  BlogDetailsRequest: async (BlogId) => {
+    let res = await axios.get(
+      ` http://localhost:8000/api/BlogsDetails/${BlogId}`,
+      {
+        headers: {
+          token: Cookies.get("token"),
+        },
+      }
+    );
+    if (res.data["status"] === "success") {
+      set({ BlogDetails: res.data["data"] });
     }
   },
 }));

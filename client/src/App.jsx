@@ -21,7 +21,7 @@ import UpdateTeamPage from "./commponent/admin/admin-team/UpdateTeamPage";
 import AdminDashboardPage from "./commponent/admin/dashboard/AdminDashboardPage";
 import RegisterForm from "./commponent/users/RegisterForm";
 import SubLogin from "./commponent/users/SubLogin";
-
+import BlogDetailsPage from "./pages/blogDetailsPage.jsx";
 
 const App = () => {
   return (
@@ -30,7 +30,9 @@ const App = () => {
         {/* Main Site Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/service" element={<ServicePage />} />
+        <Route path="/serviceDetails/:serviceID" element={<ServicePage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blogDetails/:blogID" element={<BlogDetailsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/register" element={<RegisterForm />} />

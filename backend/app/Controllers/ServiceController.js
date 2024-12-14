@@ -3,6 +3,7 @@ import {
   readServices,
   deleteServices,
   updateServices,
+  servicesDetailsService,
 } from "../Service/Service.js";
 
 //! create service........................................
@@ -23,5 +24,11 @@ export const updateService = async (req, res) => {
 //! delete service........................................
 export const deleteService = async (req, res) => {
   let result = await deleteServices(req);
+  return res.json(result);
+};
+
+//! Services Details........................................
+export const serviceDetails = async (req, res) => {
+  let result = await servicesDetailsService(req);
   return res.json(result);
 };

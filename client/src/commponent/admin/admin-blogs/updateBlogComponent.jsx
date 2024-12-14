@@ -51,21 +51,6 @@ const UpdateBlogComponent = () => {
           />
         </div>
 
-        {/* Author Name */}
-        <div className="mb-3">
-          <label htmlFor="authorInput" className="form-label fw-semibold">
-            Author Name:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="authorInput"
-            placeholder="Enter author name"
-            value={BlogFormValue.author}
-            onChange={(e) => BlogFormOnChange("author", e.target.value)}
-          />
-        </div>
-
         {/* Description */}
         <div className="mb-3">
           <label htmlFor="descriptionInput" className="form-label fw-semibold">
@@ -79,20 +64,6 @@ const UpdateBlogComponent = () => {
             value={BlogFormValue.description}
             onChange={(e) => BlogFormOnChange("description", e.target.value)}
           ></textarea>
-        </div>
-
-        {/* Date Input */}
-        <div className="mb-3">
-          <label htmlFor="dateInput" className="form-label fw-semibold">
-            Select Date:
-          </label>
-          <input
-            type="date"
-            className="form-control"
-            id="dateInput"
-            value={BlogFormValue.date}
-            onChange={(e) => BlogFormOnChange("date", e.target.value)}
-          />
         </div>
 
         {/* Image Input */}
