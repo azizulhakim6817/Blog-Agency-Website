@@ -8,10 +8,11 @@ import ReactPaginate from "react-paginate";
 const BlogDetails = () => {
   const { BlogDetails, BlogList, BlogDetailsRequest, BlogListRequest } =
     BlogStore();
+
   const { blogID } = useParams();
 
   const [currentPage, setCurrentPage] = useState(0);
-  const [blogsPerPage] = useState(3);
+  const [blogsPerPage] = useState(8); // Set to display 8 blogs per page
 
   const handlePageClick = (event) => {
     setCurrentPage(event.selected);
@@ -31,96 +32,97 @@ const BlogDetails = () => {
   }, [blogID]);
 
   return (
-    <div>
-      <div className="container my-5">
-        <div className="row">
-          <div className="col-12 col-md-8">
-            {BlogDetails?.map((item, i) => (
-              <div key={i} className="mt-5 mx-auto">
-                <div className="mx-auto">
-                  <img className="img-fluid" src={item?.image} alt="Blog" />
-                </div>
-                <div className="d-flex justify-content-between my-3 mx-2 m-0 p-0 text-secondary">
-                  <p className="m-0 p-0">{item?.user?.fullName}</p>
-                  <p className="m-0 p-0">
-                    {convertToLocalTime(item?.createdAt)}
-                  </p>
-                </div>
-                <h3 className="m-0 p-0">{item?.title}</h3>
-                <p className="mt-3 m-0 p-0">{item?.description}</p>
+    <div className="container my-5 ">
+      {/* Blog Details */}
+      {BlogDetails?.map((item, i) => (
+        <div
+          key={i}
+          className="col-12 col-sm-12 col-md-12 col-lg-10 mt-5 mb-5 mx-auto cardHover"
+        >
+          <div className=" text-center">
+            <img
+              className=" rounded w-100 mx-auto imageWH"
+              src={item?.image}
+              alt="Blog"
+            />
+            <div className="d-flex gap-3  my-3 text-secondary p-0 m-0">
+              <p>{item?.user?.fullName}</p>
+              <p>{convertToLocalTime(item?.createdAt)}</p>
+            </div>
+            <div className="d-flex flex-column align-items-center text-center">
+              <div className="md-5 w-75">
+                <h4 className=" fw-semibold">{item?.title}</h4>
+                <p className="mt-3 fs-5 text-secondary">{item?.description}</p>
               </div>
-            ))}
-          </div>
-
-          <div className="col-12 col-md-4 mt-5 ">
-            <h1 className="colorText fw-bold ">Related Blogs :</h1>
-            {/* Blog List with Pagination  */}
-            {currentBlogs && currentBlogs.length > 0 ? (
-              currentBlogs.map((item, i) => (
-                <div key={i} className="mb-4 mt-4">
-                  <div className="card shadow-lg">
-                    <img
-                      src={item.image}
-                      className="card-img-top"
-                      alt="blogs"
-                      style={{ objectFit: "cover", height: "200px" }}
-                    />
-
-                    <div className="card-body">
-                      <div className="d-flex justify-content-between">
-                        <p className="text-secondary">{item?.author}</p>
-                        <p className="card-title text-secondary">
-                          {convertToLocalTime(item?.createdAt)}
-                        </p>
-                      </div>
-                      <h5 className="card-title fw-bold">
-                        {item.title.slice(0, 20)}
-                      </h5>
-
-                      <p className="card-text">
-                        {item.description.slice(0, 60)}
-                      </p>
-                      <div className="d-flex justify-content-start">
-                        <Link
-                          to={`/blogDetails/${item?._id}`}
-                          type="button"
-                          className="btn text-primary colorText p-0 m-0"
-                        >
-                          Read more
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-12 d-flex justify-content-center">
-                <NoData />
-              </div>
-            )}
-
-            {/* Pagination */}
-            <div className="col-12 d-flex justify-content-center mt-4">
-              <ReactPaginate
-                previousLabel={"Previous"}
-                nextLabel={"Next"}
-                breakLabel={"..."}
-                pageCount={Math.ceil(safeBlogList.length / blogsPerPage)} // Total number of pages
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={handlePageClick} // Handle page change
-                containerClassName={"pagination justify-content-center"}
-                pageClassName={"page-item"}
-                pageLinkClassName={"page-link"}
-                previousClassName={"page-item"}
-                previousLinkClassName={"page-link"}
-                nextClassName={"page-item"}
-                nextLinkClassName={"page-link"}
-                activeClassName={"active"}
-              />
             </div>
           </div>
         </div>
+      ))}
+
+      {/* Blog List */}
+      <h3 className="colorText  mb-4">More Blogs :</h3>
+      <hr className=" w-100 pt-0 "></hr>
+      <div className="row">
+        {currentBlogs && currentBlogs.length > 0 ? (
+          currentBlogs.map((item, i) => (
+            <div key={i} className="col-12 col-md-3 mb-4 p-2">
+              <div className="card shadow-lg cardHover">
+                <img src={item.image} className="card-img-top " alt="blogs" />
+                <div className="d-flex justify-content-between  text-secondary   px-3 pb-1 m-0 p-0">
+                  <p className="CartDate m-0 p-0 fs-6 ">
+                    {item?.user?.fullName || "Unknown user"}
+                  </p>
+                  <p className="CartDate m-0 p-0 fs-6">
+                    {convertToLocalTime(item?.createdAt)}
+                  </p>
+                </div>
+                <div className="card-body px-3  m-0 p-2">
+                  <h5 className="card-title fw-bold">
+                    {item.title.slice(0, 20)}
+                  </h5>
+
+                  <p className="card-text text-secondary">
+                    {item.description.slice(0, 60)}
+                  </p>
+                  <div className="d-flex justify-content-start">
+                    <Link
+                      to={`/blogDetails/${item?._id}`}
+                      type="button"
+                      className="btn cardBtn p-1 m-1"
+                    >
+                      Read more
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="col-12 d-flex justify-content-center">
+            <NoData />
+          </div>
+        )}
+      </div>
+
+      {/* Pagination */}
+      <div className="mt-4 d-flex justify-content-center">
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          breakLabel={"..."}
+          pageCount={Math.ceil(safeBlogList.length / blogsPerPage)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          activeClassName={"active"}
+        />
       </div>
     </div>
   );

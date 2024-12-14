@@ -83,10 +83,7 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                <button
-                  type="submit"
-                  className="btn btnButton  text-black fw-bold w-25 py-2 shadow"
-                >
+                <button type="submit" className="btn btnButton  w-25 py-2 ">
                   Submit
                 </button>
               </form>

@@ -17,6 +17,15 @@ router.get("/UserOTP/:email", UsersController.UserOTP);
 router.get("/VerifyLogin/:email/:otp", UsersController.VerifyLogin);
 router.get("/UserLogout", AuthMiddleware, UsersController.UserLogout);
 
+
+
+//! Blogs ...................................................................
+router.post("/creat-blog", AuthMiddleware, BlogController.blog);
+router.get("/readBlog", BlogController.readBlog);
+router.post("/blog-update/:blogID", AuthMiddleware, BlogController.updateBlog);
+router.get("/blog-delete/:blogID", AuthMiddleware, BlogController.deleteBlog);
+router.get("/BlogsDetails/:blogID", BlogController.BlogsDetails);
+
 //! Service ...................................................................
 router.post("/creat-services", AuthMiddleware, ServiceController.services);
 router.get("/readService", ServiceController.readService);
@@ -31,13 +40,6 @@ router.get(
   ServiceController.deleteService
 );
 router.get("/servicesDetails/:serviceID", ServiceController.serviceDetails);
-
-//! Blogs ...................................................................
-router.post("/creat-blog", AuthMiddleware, BlogController.blog);
-router.get("/readBlog", BlogController.readBlog);
-router.post("/blog-update/:blogID", AuthMiddleware, BlogController.updateBlog);
-router.get("/blog-delete/:blogID", AuthMiddleware, BlogController.deleteBlog);
-router.get("/BlogsDetails/:blogID", BlogController.BlogsDetails);
 
 //! Teams ...................................................................
 router.post("/creat-teams", AuthMiddleware, TeamsController.teams);

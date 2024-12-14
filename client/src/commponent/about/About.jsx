@@ -44,10 +44,10 @@ const About = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container ">
       {/* About Section */}
       <div className="row align-items-center py-5">
-        <div className="col-md-6 text-center">
+        <div className="col-md-6 text-center ">
           <h2 className="fw-bold mb-4 colorText">About Us</h2>
           <p className="text-secondary fs-5 mb-4">
             We are a dynamic team passionate about React.js. Our mission is to
@@ -57,9 +57,9 @@ const About = () => {
             Learn More
           </button>
         </div>
-        <div className="col-md-6 text-center">
+        <div className="col-md-6 text-center ">
           <img
-            className="img-fluid rounded-3"
+            className="img-fluid rounded-3 cardHover"
             src="https://hwm-resume.vercel.app/about/hero.png"
             alt="About Us"
           />
@@ -74,8 +74,8 @@ const About = () => {
         </p>
         <Slider {...settings}>
           {TeamsList?.map((item, i) => (
-            <div key={i} className="p-3">
-              <div className="card h-100">
+            <div key={i} className=" p-3 ">
+              <div className=" card h-100 cardHover">
                 <img
                   src={item.image}
                   className="card-img-top"

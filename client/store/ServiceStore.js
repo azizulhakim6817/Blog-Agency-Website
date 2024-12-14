@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { unauthorized } from "../utility/utility.js";
 
 // Resolve the merge conflict
-let baseURL = "https://blog-agency-website-lake.vercel.app/api/"; 
+let baseURL = "https://blog-agency-website-lake.vercel.app/api/";
 
 const ServiceStore = create((set) => ({
   ServiceList: null,
@@ -25,7 +25,6 @@ const ServiceStore = create((set) => ({
   ServiceFormValue: {
     name: "",
     description: "",
-    provider: "",
     image: "",
   },
 
@@ -75,6 +74,27 @@ const ServiceStore = create((set) => ({
     } catch (err) {
       console.error("Error deleting service:", err);
       unauthorized(err.response.status); // Ensure the `unauthorized` function is defined or handle errors accordingly
+    }
+  },
+
+  // Fetch blog details
+  ServiceDetails: null,
+  ServiceDetailsRequest: async (serviceID) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:8000/api/servicesDetails/${serviceID}`,
+        {
+          headers: {
+            token: Cookies.get("token"),
+          },
+        }
+      );
+      console.log(res);
+      if (res.data.status === "success") {
+        set({ ServiceDetails: res.data.data });
+      }
+    } catch (error) {
+      console.error("Error fetching blog details:", error);
     }
   },
 }));

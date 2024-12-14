@@ -2,58 +2,59 @@ import React, { useEffect } from "react";
 import NoData from "./../layout/NoData";
 import ServiceStore from "../../../store/ServiceStore";
 import { convertToLocalTime } from "../../../utility/TimeStamps";
+import { Link } from "react-router-dom";
 
 const Service = () => {
-  const { ServiceList, ServiceRequest } = ServiceStore(); // Destructure state and API call function
+  const { ServiceList, ServiceRequest } = ServiceStore();
+  console.log(ServiceList);
 
   useEffect(() => {
-    ServiceRequest(); // Fetch the service list when the component mounts
+    ServiceRequest();
   }, [ServiceRequest]);
 
   return (
-    <div className="container mt-5 mb-5">
+    <div className="container mt-3 mb-5">
       <div className="row">
         {/* Blog contains................................ */}
         <div className=" my-3">
           <div className=" mt-3">
-            <div className=" d-flex flex-column align-items-center justify-content-center text-center">
-              <h1 className=" colorText fw-medium ">Our Services</h1>
-              <h3 className=" text-secondary fs-5 ">
-                Your journey starts here
-              </h3>
+            <div className=" d-flex flex-column   ">
+              <h3 className=" colorText fw-medium ">Our Services</h3>
+              <p className=" text-secondary fs-5 ">Your journey starts here</p>
+              <hr></hr>
             </div>
           </div>
         </div>
         {/* api called blogs ................................................. */}
-        {ServiceList && ServiceList.length > 0 ? (
-          ServiceList.map((item, i) => (
-            <div key={item._id || i} className="col-12 col-md-3 mb-4">
-              <div className="card shadow-lg h-100">
-                <img
-                  src={item.image}
-                  className="card-img-top"
-                  alt={item.name}
-                />
-                <div className="card-body d-flex flex-column">
-                  <div className=" d-flex justify-content-between">
-                    <p className="text-secondary">{item?.provider}</p>
-                    <p className="card-title text-secondary ">
-                      {convertToLocalTime(item?.createdAt)}
-                    </p>
-                  </div>
-
+        {ServiceList && ServiceList?.length > 0 ? (
+          ServiceList?.map((item, i) => (
+            <div key={i} className="col-12 col-md-3 mb-4 p-2 m-0 ">
+              <div className="card shadow-lg cardHover">
+                <img src={item?.image} className="card-img-top" alt="blogs" />
+                <div className="d-flex justify-content-between  text-secondary  px-3 pb-1 m-0 p-0">
+                  <p className="CartDate m-0 p-0 fs-6 ">
+                    {item?.user?.fullName ? item.user.fullName : "Unknown user"}
+                  </p>
+                  <p className="CartDate m-0 p-0 fs-6">
+                    {convertToLocalTime(item?.createdAt)}
+                  </p>
+                </div>
+                <div className="card-body px-3  m-0 p-2">
                   <h5 className="card-title fw-bold">
-                    {item.name.slice(0, 20)}
+                    {item?.name?.slice(0, 20)}
                   </h5>
 
-                  <p className="card-text">{item.description.slice(0, 60)}</p>
-                  <div className="mt-auto">
-                    <button
+                  <p className="card-text text-secondary">
+                    {item?.description?.slice(0, 60)}...
+                  </p>
+                  <div className="d-flex justify-content-start">
+                    <Link
+                      to={`/serviceDetails/${item?._id}`}
                       type="button"
-                      className="btn btn-link text-primary p-0 text-decoration-none"
+                      className=" btn cardBtn p-1 m-1"
                     >
                       Read more
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

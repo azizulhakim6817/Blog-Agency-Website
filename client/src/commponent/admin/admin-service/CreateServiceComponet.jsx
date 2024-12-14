@@ -22,7 +22,6 @@ const CreateServiceComponent = () => {
   const SubmitButton = async () => {
     await CreateServiceRequest(ServiceFormValue);
     ServiceFormOnChange("name", "");
-    ServiceFormOnChange("provider", "");
     ServiceFormOnChange("description", "");
     ServiceFormOnChange("image", "");
 

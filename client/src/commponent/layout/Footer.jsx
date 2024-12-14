@@ -97,7 +97,7 @@ const Footer = () => {
                       id="newsletterEmail"
                       placeholder="username@site.com"
                     />
-                    <button className="btn btnButton text-black" type="submit">
+                    <button className="btn btnButton " type="submit">
                       Subscribe
                     </button>
                   </div>
