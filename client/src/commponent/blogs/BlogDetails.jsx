@@ -54,7 +54,7 @@ const BlogDetails = () => {
 
           <div className="col-12 col-md-4 mt-5 ">
             <h1 className="colorText fw-bold ">Related Blogs :</h1>
-            {/* Blog List with Pagination */}
+            {/* Blog List with Pagination add */}
             {currentBlogs && currentBlogs.length > 0 ? (
               currentBlogs.map((item, i) => (
                 <div key={i} className="mb-4 mt-4">

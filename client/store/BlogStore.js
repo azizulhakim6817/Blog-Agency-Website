@@ -62,7 +62,7 @@ const BlogStore = create((set) => ({
     }
   },
 
-  // Delete a blog
+  // Delete a blogs
   DeleteBlogRequest: async (BlogId) => {
     try {
       let res = await axios.get(`${baseURL}blog-delete/${BlogId}`, {
