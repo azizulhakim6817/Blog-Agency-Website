@@ -9,11 +9,11 @@ export const JWT_KEY = "AF8957SFDSD";
 export const JWT_EXPIRE_TIME = 30 * 24 * 60 * 60;
 
 //! Emailer sender .............
-export const EMAIL_HOST = "";
-export const EMAIL_PORT = "";
+export const EMAIL_HOST = "mail.freelancerazizulhakim.com";
+export const EMAIL_PORT = 25;
 export const EMAIL_SECURITY = false;
-export const EMAIL_USER = "";
-export const EMAIL_PASS = "";
+export const EMAIL_USER = "contact@freelancerazizulhakim.com";
+export const EMAIL_PASS = "68178@#$Azizul";
 export const EMAIL_UN_AUTH = false; //all man email send krte pare
 
 //! cache handles..........
