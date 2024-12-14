@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { getEmail, setEmail } from "../utility/utility";
 
-// Resolve the merge conflict
+
 let baseURL = "https://blog-agency-website-lake.vercel.app/api/"; 
 
 const UserStore = create((set) => ({
@@ -40,7 +40,7 @@ const UserStore = create((set) => ({
     }));
   },
 
-  isLoginFormSubmitting: false, // Renamed to avoid duplication
+  isLoginFormSubmitting: false, 
   LoginRequest: async (reqBody) => {
     set({ isLoginFormSubmitting: true });
     let res = await axios.post(`${baseURL}Login`, reqBody);
