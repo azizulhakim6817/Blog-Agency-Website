@@ -62,7 +62,7 @@ const ServiceStore = create((set) => ({
       return res.data.status === "success";
     } catch (err) {
       console.error("Error updating service:", err);
-      unauthorized(err.response.status); // Ensure the `unauthorized` function is defined or handle errors accordingly
+      unauthorized(err.response.status);
     }
   },
 
@@ -73,7 +73,7 @@ const ServiceStore = create((set) => ({
       await axios.get(url, { headers: { token: Cookies.get("token") } });
     } catch (err) {
       console.error("Error deleting service:", err);
-      unauthorized(err.response.status); // Ensure the `unauthorized` function is defined or handle errors accordingly
+      unauthorized(err.response.status);
     }
   },
 
@@ -81,14 +81,11 @@ const ServiceStore = create((set) => ({
   ServiceDetails: null,
   ServiceDetailsRequest: async (serviceID) => {
     try {
-      const res = await axios.get(
-        `http://localhost:8000/api/servicesDetails/${serviceID}`,
-        {
-          headers: {
-            token: Cookies.get("token"),
-          },
-        }
-      );
+      const res = await axios.get(`${baseURL}servicesDetails/${serviceID}`, {
+        headers: {
+          token: Cookies.get("token"),
+        },
+      });
       console.log(res);
       if (res.data.status === "success") {
         set({ ServiceDetails: res.data.data });
